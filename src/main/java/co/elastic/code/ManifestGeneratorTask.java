@@ -27,7 +27,7 @@ import java.util.stream.Collectors;
 /**
  * @author poytr1
  */
-public class ManifestGenerator extends DefaultTask {
+public class ManifestGeneratorTask extends DefaultTask {
 
     @TaskAction
     void generateConfigFile() {
@@ -51,6 +51,7 @@ public class ManifestGenerator extends DefaultTask {
             for (ArtifactRepository r : project.getRepositories()) {
                 Repo repo = new Repo();
                 String url = "";
+                // TODO(pcxu): set credentials for private repo
                 Credentials creds;
                 if (r instanceof MavenArtifactRepository) {
                     repo.setRepoType(Repo.RepoTypes.MAVEN);
@@ -66,15 +67,15 @@ public class ManifestGenerator extends DefaultTask {
                 } else {
                     getLogger().error("Unrecognized repo type of " + r.getName());
                 }
-                repo.setUrl(url);
-                repos.add(repo);
+                if (!url.startsWith("file:/")) {
+                    repo.setUrl(url);
+                    repos.add(repo);
+                }
             }
             thisProjectInfo.setRepos(repos.stream().distinct().collect(Collectors.toList()));
             ArrayList<Dependency> deps = new ArrayList<>();
             for (Configuration conf : project.getConfigurations()) {
-                conf.getAllDependencies().forEach(dep -> {
-                    deps.add(new Dependency(dep.getGroup(), dep.getName(), dep.getVersion()));
-                });
+                conf.getAllDependencies().stream().filter(dep -> !"unspecified".equals(dep.getName())).map(dep -> new Dependency(dep.getGroup(), dep.getName(), dep.getVersion())).forEach(deps::add);
             }
             thisProjectInfo.setDependencies(deps.stream().distinct().collect(Collectors.toList()));
             SourceSetContainer sourceSetContainer = (SourceSetContainer)project.getProperties().get("sourceSets");
