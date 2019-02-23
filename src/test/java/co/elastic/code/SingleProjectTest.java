@@ -13,6 +13,7 @@ public class SingleProjectTest extends BaseProjectTest {
                 "  \"projectInfos\": [\n" +
                 "    {\n" +
                 "      \"android\": false,\n" +
+                "      \"path\": \":\",\n" +
                 "      \"repos\": [\n" +
                 "        {\n" +
                 "          \"repoType\": \"MAVEN\",\n" +

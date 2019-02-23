@@ -35,6 +35,7 @@ public class ManifestGeneratorTask extends DefaultTask {
         ArrayList<ProjectInfo> projectInfos = new ArrayList<>();
         getProject().allprojects(project -> {
             ProjectInfo thisProjectInfo = new ProjectInfo();
+            thisProjectInfo.setPath(project.getPath());
             // set Android-related infos
             if (isAndroidApp(project)) {
                 thisProjectInfo.setAndroid(true);

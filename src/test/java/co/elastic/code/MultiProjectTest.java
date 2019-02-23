@@ -13,6 +13,7 @@ public class MultiProjectTest extends  BaseProjectTest {
                 "  \"projectInfos\": [\n" +
                 "    {\n" +
                 "      \"android\": false,\n" +
+                "      \"path\": \":\",\n" +
                 "      \"repos\": [\n" +
                 "        {\n" +
                 "          \"repoType\": \"MAVEN\",\n" +
@@ -23,6 +24,7 @@ public class MultiProjectTest extends  BaseProjectTest {
                 "    },\n" +
                 "    {\n" +
                 "      \"android\": false,\n" +
+                "      \"path\": \":template-core\",\n" +
                 "      \"repos\": [\n" +
                 "        {\n" +
                 "          \"repoType\": \"MAVEN\",\n" +
@@ -70,6 +72,7 @@ public class MultiProjectTest extends  BaseProjectTest {
                 "    },\n" +
                 "    {\n" +
                 "      \"android\": false,\n" +
+                "      \"path\": \":template-server\",\n" +
                 "      \"repos\": [\n" +
                 "        {\n" +
                 "          \"repoType\": \"MAVEN\",\n" +

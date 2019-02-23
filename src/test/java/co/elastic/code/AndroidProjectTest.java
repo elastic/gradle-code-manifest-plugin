@@ -13,6 +13,7 @@ public class AndroidProjectTest extends BaseProjectTest {
                 "  \"projectInfos\": [\n" +
                 "    {\n" +
                 "      \"android\": false,\n" +
+                "      \"path\": \":\",\n" +
                 "      \"repos\": [\n" +
                 "        {\n" +
                 "          \"repoType\": \"MAVEN\",\n" +
@@ -24,6 +25,7 @@ public class AndroidProjectTest extends BaseProjectTest {
                 "    {\n" +
                 "      \"android\": true,\n" +
                 "      \"androidSdkVersion\": \"android-25\",\n" +
+                "      \"path\": \":app\",\n" +
                 "      \"repos\": [\n" +
                 "        {\n" +
                 "          \"repoType\": \"MAVEN\",\n" +

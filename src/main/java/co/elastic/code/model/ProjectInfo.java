@@ -15,6 +15,8 @@ public class ProjectInfo {
     /** Property androidSdkVersion */
     private String androidSdkVersion;
 
+    private String path;
+
     private List<Repo> repos;
 
     private List<Dependency> dependencies;
@@ -91,12 +93,24 @@ public class ProjectInfo {
         return testSrcDirs;
     }
 
+    public void setPath(String path) {
+        this.path = path;
+    }
+
+    public String getPath() {
+        return path;
+    }
+
     @Override
     public String toString() {
         return new ToStringBuilder(this, ToStringStyle.MULTI_LINE_STYLE)
                 .append("android", android)
+                .append("androidSdkVersion", androidSdkVersion)
                 .append("repos", repos)
                 .append("deps", dependencies)
+                .append("path", path)
+                .append("srcDirs", srcDirs)
+                .append("testSrcDirs", testSrcDirs)
                 .toString();
     }
 }
