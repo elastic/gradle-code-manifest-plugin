@@ -47,10 +47,19 @@ public class AndroidProjectTest extends BaseProjectTest {
                 "          \"version\": \"1.0.1\"\n" +
                 "        },\n" +
                 "        {\n" +
+                "          \"path\": \"libs/u2fRequestHandler-v1-1.22.0-SNAPSHOT.jar\"\n" +
+                "        },\n" +
+                "        {\n" +
                 "          \"groupId\": \"junit\",\n" +
                 "          \"artifactId\": \"junit\",\n" +
                 "          \"version\": \"4.12\"\n" +
                 "        }\n" +
+                "      ],\n" +
+                "      \"srcDirs\": [\n" +
+                "        \"src/main/java\"\n" +
+                "      ],\n" +
+                "      \"testSrcDirs\": [\n" +
+                "        \"src/test/java\"\n" +
                 "      ]\n" +
                 "    }\n" +
                 "  ]\n" +

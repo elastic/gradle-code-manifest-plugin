@@ -15,10 +15,20 @@ public class Dependency {
 
     private String version;
 
+    private String path;
+
     public Dependency(String groupId, String artifactId, String version) {
         this.setgroupId(groupId);
         this.setArtifactId(artifactId);
         this.setVersion(version);
+    }
+
+    public Dependency(String path) {
+        this.setPath(path);
+    }
+
+    public void setPath(String path) {
+        this.path = path;
     }
 
     public void setArtifactId(String artifactId) {
@@ -56,6 +66,7 @@ public class Dependency {
                 .append(groupId)
                 .append(artifactId)
                 .append(version)
+                .append(path)
                 .toHashCode();
     }
 
@@ -65,6 +76,7 @@ public class Dependency {
                 .append("groupId", groupId)
                 .append("artifactId", artifactId)
                 .append("version", version)
+                .append("path", path)
                 .toString();
     }
 

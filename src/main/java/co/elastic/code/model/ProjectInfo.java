@@ -1,5 +1,6 @@
 package co.elastic.code.model;
 
+import java.util.Collections;
 import java.util.List;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
@@ -64,6 +65,14 @@ public class ProjectInfo {
 
     public List<Dependency> getDependencies() {
         return dependencies;
+    }
+
+    public void setDefaultSrcDirs() {
+        this.setSrcDirs(Collections.singletonList("src/main/java"));
+    }
+
+    public void setDefaultTestSrcDirs() {
+        this.setTestSrcDirs(Collections.singletonList("src/test/java"));
     }
 
     public void setSrcDirs(List<String> srcDirs) {

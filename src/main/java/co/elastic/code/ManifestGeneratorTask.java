@@ -21,6 +21,7 @@ import java.io.IOException;
 import java.io.Writer;
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -34,19 +35,22 @@ public class ManifestGeneratorTask extends DefaultTask {
         ArrayList<ProjectInfo> projectInfos = new ArrayList<>();
         getProject().allprojects(project -> {
             ProjectInfo thisProjectInfo = new ProjectInfo();
+            // set Android-related infos
             if (isAndroidApp(project)) {
                 thisProjectInfo.setAndroid(true);
-                if (project.getTasksByName("android", false) != null) {
+                Object androidConfig = project.findProperty("android");
+                if (androidConfig != null) {
                     try {
-                        String androidVersion = (String) MethodUtils.invokeMethod(project.findProperty("android"), true, "getCompileSdkVersion");
+                        String androidVersion = (String) MethodUtils.invokeMethod(androidConfig, true, "getCompileSdkVersion");
                         if (androidVersion != null) {
                             thisProjectInfo.setAndroidSdkVersion(androidVersion);
                         }
                     } catch (IllegalAccessException | NoSuchMethodException | InvocationTargetException e) {
-                        e.printStackTrace();
+                        getLogger().error("failed to get the Android version", e);
                     }
                 }
             }
+            // set repo-related infos
             ArrayList<Repo> repos = new ArrayList<>();
             for (ArtifactRepository r : project.getRepositories()) {
                 Repo repo = new Repo();
@@ -73,29 +77,44 @@ public class ManifestGeneratorTask extends DefaultTask {
                 }
             }
             thisProjectInfo.setRepos(repos.stream().distinct().collect(Collectors.toList()));
+            // set dependency-related infos
             ArrayList<Dependency> deps = new ArrayList<>();
             for (Configuration conf : project.getConfigurations()) {
                 conf.getAllDependencies().stream().filter(dep -> !"unspecified".equals(dep.getName())).map(dep -> new Dependency(dep.getGroup(), dep.getName(), dep.getVersion())).forEach(deps::add);
+                // get all local dependencies inside this repo
+                if (conf.isCanBeResolved()) {
+                    Set<File> resolvedArtifactFiles = new HashSet<>();
+                    conf.getResolvedConfiguration().getResolvedArtifacts().forEach(a -> resolvedArtifactFiles.add(a.getFile()));
+                    Set<File> allResolvedDependencyFiles = conf.getResolvedConfiguration().getFiles();
+                    allResolvedDependencyFiles.removeAll(resolvedArtifactFiles);
+                    try {
+                        allResolvedDependencyFiles.forEach(f -> deps.add(new Dependency(f.getAbsolutePath().substring(project.getBuildFile().getParent().length() + 1))));
+                    } catch (StringIndexOutOfBoundsException e) {
+                        // do nothing
+                    }
+                }
             }
             thisProjectInfo.setDependencies(deps.stream().distinct().collect(Collectors.toList()));
-            SourceSetContainer sourceSetContainer = (SourceSetContainer)project.getProperties().get("sourceSets");
+            // set sourceSet-related infos
+            SourceSetContainer sourceSetContainer = (SourceSetContainer) project.getProperties().get("sourceSets");
             if (sourceSetContainer != null) {
                 File projectDir = project.getProjectDir();
                 try {
                     Set<File> srcDirs = sourceSetContainer.getByName("main").getJava().getSrcDirs();
                     thisProjectInfo.setSrcDirs(srcDirs.stream().map(srcDir -> projectDir.toPath().relativize(srcDir.toPath()).toString()).collect(Collectors.toList()));
                 } catch (Exception e) {
-                    getLogger().error("Get src dirs error", e);
+                    thisProjectInfo.setDefaultSrcDirs();
                 }
                 try {
                     Set<File> testSrcDirs = sourceSetContainer.getByName("test").getJava().getSrcDirs();
                     thisProjectInfo.setTestSrcDirs(testSrcDirs.stream().map(srcDir -> projectDir.toPath().relativize(srcDir.toPath()).toString()).collect(Collectors.toList()));
                 } catch (Exception e) {
-                    getLogger().error("Get test src dirs error", e);
+                    thisProjectInfo.setDefaultTestSrcDirs();
                 }
             }
             projectInfos.add(thisProjectInfo);
         });
+        // serialize the config to manifest file
         Config cfg = new Config(projectInfos);
         try {
             Writer writer = new FileWriter("manifest.json");
