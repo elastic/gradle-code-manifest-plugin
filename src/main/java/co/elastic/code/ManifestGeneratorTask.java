@@ -64,8 +64,9 @@ public class ManifestGeneratorTask extends DefaultTask {
 
                 } else if (r instanceof IvyArtifactRepository) {
                     repo.setRepoType(Repo.RepoTypes.IVY);
-                    url = ((IvyArtifactRepository) r).getUrl().toString();
-
+                    if (((IvyArtifactRepository) r).getUrl() != null) {
+                        url = ((IvyArtifactRepository) r).getUrl().toString();
+                    }
                 } else if (r instanceof FlatDirectoryArtifactRepository) {
                     repo.setRepoType(Repo.RepoTypes.LOCAL);
                     url = ((FlatDirectoryArtifactRepository) r).getDirs().toString();
@@ -83,7 +84,7 @@ public class ManifestGeneratorTask extends DefaultTask {
             for (Configuration conf : project.getConfigurations()) {
                 conf.getAllDependencies().stream().filter(dep -> !"unspecified".equals(dep.getName())).map(dep -> new Dependency(dep.getGroup(), dep.getName(), dep.getVersion())).forEach(deps::add);
                 // get all local dependencies inside this repo
-                if (conf.isCanBeResolved()) {
+                if (shouldResolve(project) && conf.isCanBeResolved()) {
                     Set<File> resolvedArtifactFiles = new HashSet<>();
                     conf.getResolvedConfiguration().getResolvedArtifacts().forEach(a -> resolvedArtifactFiles.add(a.getFile()));
                     Set<File> allResolvedDependencyFiles = conf.getResolvedConfiguration().getFiles();
@@ -118,12 +119,22 @@ public class ManifestGeneratorTask extends DefaultTask {
         // serialize the config to manifest file
         Config cfg = new Config(projectInfos);
         try {
-            Writer writer = new FileWriter("manifest.json");
+            String basePath = getProject().getPath().substring(1).replaceAll(":", "/");
+            Writer writer = new FileWriter("".equals(basePath) ? "manifest.json" : basePath + "/manifest.json");
             Gson gson = new GsonBuilder().setPrettyPrinting().create();
             writer.write(gson.toJson(cfg));
             writer.close();
         } catch (IOException e) {
             getLogger().error("Write serialized config failed", e);
+        }
+    }
+
+    private boolean shouldResolve(Project project) {
+        if (project.hasProperty("manifest.resolve")) {
+            Object prop = project.property("manifest.resolve");
+            return prop instanceof String ? Boolean.parseBoolean((String) prop) : (Boolean) prop;
+        } else {
+            return false;
         }
     }
 

@@ -9,6 +9,7 @@ import org.gradle.testkit.runner.GradleRunner;
 import org.junit.*;
 
 import java.io.*;
+import java.util.Arrays;
 
 import static org.gradle.testkit.runner.TaskOutcome.SUCCESS;
 
@@ -44,7 +45,7 @@ public class BaseProjectTest extends TestCase {
         BuildResult result =  GradleRunner.create()
                 .withProjectDir(this.projectDir)
                 .withPluginClasspath()
-                .withArguments("genManifest")
+                .withArguments(Arrays.asList("-Pmanifest.resolve=true", "genManifest"))
                 .build();
         assertEquals(SUCCESS, result.task(":genManifest").getOutcome());
         FileUtils.moveFileToDirectory(
