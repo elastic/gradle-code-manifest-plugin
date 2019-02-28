@@ -1,0 +1,27 @@
+{
+  "projectInfos": [
+    {
+      "android": false,
+      "path": ":",
+      "repos": [
+        {
+          "repoType": "MAVEN",
+          "url": "https://repo.maven.apache.org/maven2/"
+        }
+      ],
+      "dependencies": [
+        {
+          "groupId": "com.google.guava",
+          "artifactId": "guava",
+          "version": "18.0"
+        }
+      ],
+      "srcDirs": [
+        "src/main/java"
+      ],
+      "testSrcDirs": [
+        "src/test/java"
+      ]
+    }
+  ]
+}

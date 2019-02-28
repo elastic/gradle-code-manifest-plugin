@@ -1,0 +1,111 @@
+{
+  "projectInfos": [
+    {
+      "android": false,
+      "path": ":",
+      "repos": [
+        {
+          "repoType": "MAVEN",
+          "url": "https://repo.maven.apache.org/maven2/"
+        }
+      ],
+      "dependencies": []
+    },
+    {
+      "android": false,
+      "path": ":template-core",
+      "repos": [
+        {
+          "repoType": "MAVEN",
+          "url": "https://repo.maven.apache.org/maven2/"
+        }
+      ],
+      "dependencies": [
+        {
+          "groupId": "org.apache.logging.log4j",
+          "artifactId": "log4j-api",
+          "version": "2.9.1"
+        },
+        {
+          "groupId": "org.apache.logging.log4j",
+          "artifactId": "log4j-core",
+          "version": "2.9.1"
+        },
+        {
+          "groupId": "org.apache.logging.log4j",
+          "artifactId": "log4j-slf4j-impl",
+          "version": "2.9.1"
+        },
+        {
+          "groupId": "com.google.guava",
+          "artifactId": "guava",
+          "version": "23.0"
+        },
+        {
+          "groupId": "org.mockito",
+          "artifactId": "mockito-core",
+          "version": "2.11.0"
+        },
+        {
+          "groupId": "junit",
+          "artifactId": "junit",
+          "version": "4.12"
+        }
+      ],
+      "srcDirs": [
+        "src/main/java"
+      ],
+      "testSrcDirs": [
+        "src/test/java"
+      ]
+    },
+    {
+      "android": false,
+      "path": ":template-server",
+      "repos": [
+        {
+          "repoType": "MAVEN",
+          "url": "https://repo.maven.apache.org/maven2/"
+        }
+      ],
+      "dependencies": [
+        {
+          "groupId": "org.apache.logging.log4j",
+          "artifactId": "log4j-api",
+          "version": "2.9.1"
+        },
+        {
+          "groupId": "org.apache.logging.log4j",
+          "artifactId": "log4j-core",
+          "version": "2.9.1"
+        },
+        {
+          "groupId": "org.apache.logging.log4j",
+          "artifactId": "log4j-slf4j-impl",
+          "version": "2.9.1"
+        },
+        {
+          "groupId": "com.google.guava",
+          "artifactId": "guava",
+          "version": "23.0"
+        },
+        {
+          "groupId": "org.mockito",
+          "artifactId": "mockito-core",
+          "version": "2.11.0"
+        },
+        {
+          "groupId": "junit",
+          "artifactId": "junit",
+          "version": "4.12"
+        }
+      ],
+      "srcDirs": [
+        "src/main/java"
+      ],
+      "testSrcDirs": [
+        "src/test/java"
+      ]
+    }
+  ]
+}

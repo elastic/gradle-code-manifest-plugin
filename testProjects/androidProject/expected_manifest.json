@@ -1,0 +1,57 @@
+{
+  "projectInfos": [
+    {
+      "android": false,
+      "path": ":",
+      "repos": [
+        {
+          "repoType": "MAVEN",
+          "url": "https://jcenter.bintray.com/"
+        }
+      ],
+      "dependencies": []
+    },
+    {
+      "android": true,
+      "androidSdkVersion": "android-25",
+      "path": ":app",
+      "repos": [
+        {
+          "repoType": "MAVEN",
+          "url": "https://jcenter.bintray.com/"
+        }
+      ],
+      "dependencies": [
+        {
+          "groupId": "com.android.support.test.espresso",
+          "artifactId": "espresso-core",
+          "version": "2.2.2"
+        },
+        {
+          "groupId": "com.android.support",
+          "artifactId": "appcompat-v7",
+          "version": "25.1.1"
+        },
+        {
+          "groupId": "com.android.support.constraint",
+          "artifactId": "constraint-layout",
+          "version": "1.0.1"
+        },
+        {
+          "path": "libs/u2fRequestHandler-v1-1.22.0-SNAPSHOT.jar"
+        },
+        {
+          "groupId": "junit",
+          "artifactId": "junit",
+          "version": "4.12"
+        }
+      ],
+      "srcDirs": [
+        "src/main/java"
+      ],
+      "testSrcDirs": [
+        "src/test/java"
+      ]
+    }
+  ]
+}
