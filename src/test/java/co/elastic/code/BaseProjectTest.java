@@ -1,7 +1,5 @@
 package co.elastic.code;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 import junit.framework.TestCase;
 import org.gradle.internal.impldep.org.apache.commons.io.FileUtils;
 import org.gradle.testkit.runner.BuildResult;
@@ -21,21 +19,17 @@ public class BaseProjectTest extends TestCase {
 
     private File baseProjectDir = new File(System.getProperty("user.dir") + "/testProjects");
     private File projectDir = new File(this.baseProjectDir, getProjectName());
-    private File manifestDir = new File(this.projectDir, "manifest.json");
+    private File manifestFile = new File(this.projectDir, "manifest.json");
+    private File expectedManifestFile = new File(this.projectDir, "expected_manifest.json");
 
     private void cleanUp() {
-        if (manifestDir.exists()) {
-            assertTrue(manifestDir.delete());
+        if (manifestFile.exists()) {
+            assertTrue(manifestFile.delete());
         }
     }
 
     // this method should be override by subclass
     protected String getProjectName() {
-        return "";
-    }
-
-    // this method should be override by subclass
-    protected String getExpectedConfig() {
         return "";
     }
 
@@ -54,11 +48,13 @@ public class BaseProjectTest extends TestCase {
     }
 
     @Test
-    public void testProjectConfig() throws FileNotFoundException {
-        BufferedReader bufferedReader = new BufferedReader(new FileReader(this.manifestDir));
-        Gson gson = new GsonBuilder().setPrettyPrinting().create();
-        Object json = gson.fromJson(bufferedReader, Object.class);
-        assertEquals(this.getExpectedConfig(), gson.toJson(json));
+    public void testProjectConfig() throws IOException {
+        if (!expectedManifestFile.exists()) {
+            System.out.println("generate a new expected config file");
+            FileUtils.moveFile(this.manifestFile, this.expectedManifestFile);
+        } else {
+            junitx.framework.FileAssert.assertEquals(this.expectedManifestFile, this.manifestFile);
+        }
         cleanUp();
     }
 
