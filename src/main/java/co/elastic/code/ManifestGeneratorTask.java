@@ -7,6 +7,8 @@ import org.apache.commons.lang3.reflect.MethodUtils;
 import org.gradle.api.DefaultTask;
 import org.gradle.api.Project;
 import org.gradle.api.artifacts.Configuration;
+import org.gradle.api.artifacts.ExternalDependency;
+import org.gradle.api.artifacts.ResolvedDependency;
 import org.gradle.api.artifacts.repositories.ArtifactRepository;
 import org.gradle.api.artifacts.repositories.FlatDirectoryArtifactRepository;
 import org.gradle.api.artifacts.repositories.IvyArtifactRepository;
@@ -20,15 +22,15 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.Writer;
 import java.lang.reflect.InvocationTargetException;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 import java.util.stream.Collectors;
 
 /**
  * @author poytr1
  */
 public class ManifestGeneratorTask extends DefaultTask {
+
+    private HashSet<ResolvedDependency> chidrenVisited = new HashSet<>();
 
     @TaskAction
     void generateConfigFile() {
@@ -82,17 +84,23 @@ public class ManifestGeneratorTask extends DefaultTask {
             // set dependency-related infos
             ArrayList<Dependency> deps = new ArrayList<>();
             for (Configuration conf : project.getConfigurations()) {
-                conf.getAllDependencies().stream().filter(dep -> !"unspecified".equals(dep.getName())).map(dep -> new Dependency(dep.getGroup(), dep.getName(), dep.getVersion())).forEach(deps::add);
-                // get all local dependencies inside this repo
-                if (shouldResolve(project) && conf.isCanBeResolved()) {
-                    Set<File> resolvedArtifactFiles = new HashSet<>();
-                    conf.getResolvedConfiguration().getResolvedArtifacts().forEach(a -> resolvedArtifactFiles.add(a.getFile()));
-                    Set<File> allResolvedDependencyFiles = conf.getResolvedConfiguration().getFiles();
-                    allResolvedDependencyFiles.removeAll(resolvedArtifactFiles);
-                    try {
-                        allResolvedDependencyFiles.forEach(f -> deps.add(new Dependency(f.getAbsolutePath().substring(project.getBuildFile().getParent().length() + 1))));
-                    } catch (StringIndexOutOfBoundsException e) {
-                        // do nothing
+                conf.getAllDependencies().withType(ExternalDependency.class).stream().map(dep -> new Dependency(dep.getGroup(), dep.getName(), dep.getVersion())).forEach(deps::add);
+                if (Arrays.stream(conf.getClass().getDeclaredMethods()).anyMatch(m -> m.getName().equals("isCanBeResolved")) && conf.isCanBeResolved()) {
+                    conf.getResolvedConfiguration().getFirstLevelModuleDependencies().forEach(d -> {
+                        deps.add(new Dependency(d.getModuleGroup(), d.getModuleName(), d.getModuleVersion()));
+                        chidrenVisited.add(d);
+                        d.getChildren().forEach(c -> handleTransitive(c, deps));
+                    });
+                    if (shouldIncludeLocalArtifacts(project)) {
+                        Set<File> resolvedArtifactFiles = new HashSet<>();
+                        conf.getResolvedConfiguration().getResolvedArtifacts().forEach(a -> resolvedArtifactFiles.add(a.getFile()));
+                        Set<File> allResolvedDependencyFiles = conf.getResolvedConfiguration().getFiles();
+                        allResolvedDependencyFiles.removeAll(resolvedArtifactFiles);
+                        try {
+                            allResolvedDependencyFiles.forEach(f -> deps.add(new Dependency(f.getAbsolutePath().substring(project.getBuildFile().getParent().length() + 1))));
+                        } catch (StringIndexOutOfBoundsException e) {
+                            // do nothing
+                        }
                     }
                 }
             }
@@ -129,9 +137,17 @@ public class ManifestGeneratorTask extends DefaultTask {
         }
     }
 
-    private boolean shouldResolve(Project project) {
-        if (project.hasProperty("manifest.resolve")) {
-            Object prop = project.property("manifest.resolve");
+    private void handleTransitive(ResolvedDependency transitive, ArrayList<Dependency> deps) {
+        deps.add(new Dependency(transitive.getModuleGroup(), transitive.getModuleName(), transitive.getModuleVersion()));
+        if (!chidrenVisited.contains(transitive)) {
+            chidrenVisited.add(transitive);
+            transitive.getChildren().forEach(c -> handleTransitive(c, deps));
+        }
+    }
+
+    private boolean shouldIncludeLocalArtifacts(Project project) {
+        if (project.hasProperty("manifest.resolveLocal")) {
+            Object prop = project.property("manifest.resolveLocal");
             return prop instanceof String ? Boolean.parseBoolean((String) prop) : (Boolean) prop;
         } else {
             return false;
