@@ -1,5 +1,7 @@
 package co.elastic.code.model;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import org.apache.commons.lang3.builder.ToStringBuilder;
@@ -70,7 +72,15 @@ public class ProjectInfo {
     }
 
     public void setDefaultSrcDirs() {
-        this.setSrcDirs(Collections.singletonList("src/main/java"));
+        if (isAndroid()) {
+            this.setSrcDirs(new ArrayList<>(
+                    Arrays.asList("src/main/java",
+                                  "build/generated/source/r/debug",
+                                  "build/generated/source/buildConfig/debug",
+                                  "build/generated/source/aidl/debug")));
+        } else {
+            this.setSrcDirs(Collections.singletonList("src/main/java"));
+        }
     }
 
     public void setDefaultTestSrcDirs() {

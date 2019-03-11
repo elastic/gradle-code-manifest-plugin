@@ -47,7 +47,10 @@
         }
       ],
       "srcDirs": [
-        "src/main/java"
+        "src/main/java",
+        "build/generated/source/r/debug",
+        "build/generated/source/buildConfig/debug",
+        "build/generated/source/aidl/debug"
       ],
       "testSrcDirs": [
         "src/test/java"
