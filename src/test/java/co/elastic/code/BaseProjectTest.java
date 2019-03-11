@@ -39,7 +39,7 @@ public class BaseProjectTest extends TestCase {
         BuildResult result =  GradleRunner.create()
                 .withProjectDir(this.projectDir)
                 .withPluginClasspath()
-                .withArguments(Arrays.asList("-Pmanifest.resolve=true", "genManifest"))
+                .withArguments(Arrays.asList("-Pmanifest.resolveLocal=true", "genManifest"))
                 .build();
         assertEquals(SUCCESS, result.task(":genManifest").getOutcome());
         FileUtils.moveFileToDirectory(
