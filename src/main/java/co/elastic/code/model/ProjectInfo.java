@@ -19,6 +19,8 @@ public class ProjectInfo {
 
     private String path;
 
+    private String name;
+
     private List<Repo> repos;
 
     private List<Dependency> dependencies;
@@ -103,12 +105,20 @@ public class ProjectInfo {
         return testSrcDirs;
     }
 
-    public void setPath(String path) {
-        this.path = path;
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getName() {
+        return name;
     }
 
     public String getPath() {
         return path;
+    }
+
+    public void setPath(String path) {
+        this.path = path;
     }
 
     @Override
@@ -119,6 +129,7 @@ public class ProjectInfo {
                 .append("repos", repos)
                 .append("deps", dependencies)
                 .append("path", path)
+                .append("name", name)
                 .append("srcDirs", srcDirs)
                 .append("testSrcDirs", testSrcDirs)
                 .toString();

@@ -3,6 +3,7 @@
     {
       "android": false,
       "path": ":",
+      "name": "androidProject",
       "repos": [
         {
           "repoType": "MAVEN",
@@ -19,6 +20,7 @@
       "android": true,
       "androidSdkVersion": "android-25",
       "path": ":app",
+      "name": "app",
       "repos": [
         {
           "repoType": "MAVEN",
@@ -514,6 +516,5 @@
         "src/test/java"
       ]
     }
-  ],
-  "rootName": "androidProject"
+  ]
 }

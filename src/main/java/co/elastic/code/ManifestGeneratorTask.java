@@ -37,6 +37,7 @@ public class ManifestGeneratorTask extends DefaultTask {
         ArrayList<ProjectInfo> projectInfos = new ArrayList<>();
         getProject().allprojects(project -> {
             ProjectInfo thisProjectInfo = new ProjectInfo();
+            thisProjectInfo.setName(project.getName());
             thisProjectInfo.setPath(project.getPath());
             // set Android-related infos
             if (isAndroidApp(project)) {
@@ -125,7 +126,7 @@ public class ManifestGeneratorTask extends DefaultTask {
             projectInfos.add(thisProjectInfo);
         });
         // serialize the config to manifest file
-        Config cfg = new Config(projectInfos, getProject().getRootProject().getName());
+        Config cfg = new Config(projectInfos);
         try {
             String basePath = getProject().getPath().substring(1).replaceAll(":", "/");
             Writer writer = new FileWriter("".equals(basePath) ? "manifest.json" : basePath + "/manifest.json");

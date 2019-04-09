@@ -3,6 +3,7 @@
     {
       "android": false,
       "path": ":",
+      "name": "singleProject",
       "repos": [
         {
           "repoType": "MAVEN",
@@ -23,6 +24,5 @@
         "src/test/java"
       ]
     }
-  ],
-  "rootName": "singleProject"
+  ]
 }

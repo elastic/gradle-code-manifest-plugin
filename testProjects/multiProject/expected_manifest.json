@@ -3,6 +3,7 @@
     {
       "android": false,
       "path": ":",
+      "name": "basic-gradle-template",
       "repos": [
         {
           "repoType": "MAVEN",
@@ -14,6 +15,7 @@
     {
       "android": false,
       "path": ":template-core",
+      "name": "template-core",
       "repos": [
         {
           "repoType": "MAVEN",
@@ -262,6 +264,7 @@
     {
       "android": false,
       "path": ":template-server",
+      "name": "template-server",
       "repos": [
         {
           "repoType": "MAVEN",
@@ -467,6 +470,5 @@
         "src/test/java"
       ]
     }
-  ],
-  "rootName": "basic-gradle-template"
+  ]
 }
