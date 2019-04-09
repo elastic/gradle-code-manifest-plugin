@@ -467,5 +467,6 @@
         "src/test/java"
       ]
     }
-  ]
+  ],
+  "rootName": "basic-gradle-template"
 }

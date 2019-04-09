@@ -125,7 +125,7 @@ public class ManifestGeneratorTask extends DefaultTask {
             projectInfos.add(thisProjectInfo);
         });
         // serialize the config to manifest file
-        Config cfg = new Config(projectInfos);
+        Config cfg = new Config(projectInfos, getProject().getRootProject().getName());
         try {
             String basePath = getProject().getPath().substring(1).replaceAll(":", "/");
             Writer writer = new FileWriter("".equals(basePath) ? "manifest.json" : basePath + "/manifest.json");
