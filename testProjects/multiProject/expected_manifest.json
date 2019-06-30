@@ -181,12 +181,12 @@
         {
           "groupId": "net.sourceforge.pmd",
           "artifactId": "pmd-java",
-          "version": "5.6.1"
+          "version": "6.8.0"
         },
         {
           "groupId": "net.sourceforge.pmd",
           "artifactId": "pmd-core",
-          "version": "5.6.1"
+          "version": "6.8.0"
         },
         {
           "groupId": "net.java.dev.javacc",
@@ -201,12 +201,7 @@
         {
           "groupId": "org.ow2.asm",
           "artifactId": "asm",
-          "version": "5.0.4"
-        },
-        {
-          "groupId": "com.beust",
-          "artifactId": "jcommander",
-          "version": "1.48"
+          "version": "6.2.1"
         },
         {
           "groupId": "commons-io",
@@ -216,7 +211,12 @@
         {
           "groupId": "org.apache.commons",
           "artifactId": "commons-lang3",
-          "version": "3.4"
+          "version": "3.7"
+        },
+        {
+          "groupId": "com.beust",
+          "artifactId": "jcommander",
+          "version": "1.48"
         },
         {
           "groupId": "com.google.code.gson",
@@ -410,12 +410,12 @@
         {
           "groupId": "net.sourceforge.pmd",
           "artifactId": "pmd-java",
-          "version": "5.6.1"
+          "version": "6.8.0"
         },
         {
           "groupId": "net.sourceforge.pmd",
           "artifactId": "pmd-core",
-          "version": "5.6.1"
+          "version": "6.8.0"
         },
         {
           "groupId": "net.java.dev.javacc",
@@ -430,7 +430,17 @@
         {
           "groupId": "org.ow2.asm",
           "artifactId": "asm",
-          "version": "5.0.4"
+          "version": "6.2.1"
+        },
+        {
+          "groupId": "commons-io",
+          "artifactId": "commons-io",
+          "version": "2.4"
+        },
+        {
+          "groupId": "org.apache.commons",
+          "artifactId": "commons-lang3",
+          "version": "3.7"
         },
         {
           "groupId": "org.mockito",

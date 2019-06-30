@@ -1,4 +1,5 @@
 # gradle-code-manifest-plugin
+[![Build Status](https://travis-ci.org/elastic/gradle-code-manifest-plugin.svg?branch=master)](https://travis-ci.org/elastic/gradle-code-manifest-plugin)
 
 Gradle plugin to generate a manifest file consumed by https://github.com/elastic/java-langserver.
 
