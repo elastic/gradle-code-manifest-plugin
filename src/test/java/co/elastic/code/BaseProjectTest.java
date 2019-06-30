@@ -43,8 +43,8 @@ public class BaseProjectTest extends TestCase {
                 .build();
         assertEquals(SUCCESS, result.task(":genManifest").getOutcome());
         FileUtils.moveFileToDirectory(
-                FileUtils.getFile(System.getProperty("user.dir") + "/manifest.json"),
-                FileUtils.getFile(this.projectDir), false);
+        FileUtils.getFile(System.getProperty("user.dir") + "/manifest.json"),
+        FileUtils.getFile(this.projectDir), false);
     }
 
     @Test

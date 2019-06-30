@@ -1,0 +1,12 @@
+language: java
+install: true
+
+jdk:
+  - openjdk12
+
+os:
+- linux
+- osx
+
+script:
+  - ./gradlew clean test

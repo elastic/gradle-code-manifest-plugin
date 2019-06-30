@@ -4,5 +4,21 @@ Gradle plugin to generate a manifest file consumed by https://github.com/elastic
 
 If you want to file a issue, file it in: https://github.com/elastic/code/issues.
 
+
+## Upload to local maven repository
+Use `gradle uploadArchives`
+
 ## Usage
-Run `gradle genManifest` will generate a file called **manifest.json** in the project folder.
+Add following script to **build.grdle**:
+```
+buildscript {
+    repositories {
+         mavenLocal()
+    }
+    dependencies {
+        classpath 'co.elastic.code:gradle-manifest-plugin:1.0-SNAPSHOT'
+    }
+}
+apply plugin: 'gradle-manifest-plugin'
+```
+Then run `gradle genManifest` will generate a file called **manifest.json** in the project folder.
