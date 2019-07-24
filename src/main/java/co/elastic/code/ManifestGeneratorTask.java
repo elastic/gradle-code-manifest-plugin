@@ -105,7 +105,15 @@ public class ManifestGeneratorTask extends DefaultTask {
                     }
                 }
             }
-            thisProjectInfo.setDependencies(deps.stream().distinct().collect(Collectors.toList()));
+            HashMap<Dependency, Dependency> dependencyDependencyHashMap = new HashMap<>(10000);
+            deps.forEach(dependency -> {
+                if (!dependencyDependencyHashMap.containsKey(dependency)) {
+                    dependencyDependencyHashMap.put(dependency, dependency);
+                } else if (dependency.compareTo(dependencyDependencyHashMap.get(dependency)) > 0) {
+                    dependencyDependencyHashMap.put(dependency, dependency);
+                }
+            });
+            thisProjectInfo.setDependencies(new ArrayList<>(dependencyDependencyHashMap.values()));
             // set sourceSet-related infos
             SourceSetContainer sourceSetContainer = (SourceSetContainer) project.getProperties().get("sourceSets");
             if (sourceSetContainer != null) {

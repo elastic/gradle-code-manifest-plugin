@@ -1,14 +1,14 @@
 package co.elastic.code.model;
 
-import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
+import org.gradle.util.VersionNumber;
 
 /**
  * @author poytr1
  */
-public class Dependency {
+public class Dependency implements Comparable<Dependency> {
     private String groupId;
 
     private String artifactId;
@@ -18,7 +18,7 @@ public class Dependency {
     private String path;
 
     public Dependency(String groupId, String artifactId, String version) {
-        this.setgroupId(groupId);
+        this.setGroupId(groupId);
         this.setArtifactId(artifactId);
         this.setVersion(version);
     }
@@ -31,6 +31,10 @@ public class Dependency {
         this.path = path;
     }
 
+    public String getPath() {
+        return path;
+    }
+
     public void setArtifactId(String artifactId) {
         this.artifactId = artifactId;
     }
@@ -39,11 +43,11 @@ public class Dependency {
         return artifactId;
     }
 
-    public void setgroupId(String groupId) {
+    public void setGroupId(String groupId) {
         this.groupId = groupId;
     }
 
-    public String getgroupId() {
+    public String getGroupId() {
         return groupId;
     }
 
@@ -56,8 +60,29 @@ public class Dependency {
     }
 
     @Override
+    public int compareTo(Dependency other) {
+        if (this.equals(other)) {
+            return VersionNumber.parse(version).compareTo(VersionNumber.parse(other.version));
+        }
+        return -1;
+    }
+
+    @Override
     public boolean equals(Object obj) {
-        return EqualsBuilder.reflectionEquals(this, obj);
+        if (this == obj) {
+            return true;
+        }
+        if (obj instanceof Dependency) {
+            String otherGroupId = ((Dependency) obj).getGroupId();
+            String otherArtifactId= ((Dependency) obj).getArtifactId();
+            String otherPath = ((Dependency) obj).getPath();
+            if (otherGroupId != null && otherArtifactId != null) {
+                return (otherGroupId.equals(groupId)) && (otherArtifactId.equals(artifactId));
+            } else if (otherPath != null) {
+                return otherPath.equals(path);
+            }
+        }
+        return false;
     }
 
     @Override
@@ -65,7 +90,6 @@ public class Dependency {
         return new HashCodeBuilder(17, 37)
                 .append(groupId)
                 .append(artifactId)
-                .append(version)
                 .append(path)
                 .toHashCode();
     }

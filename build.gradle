@@ -7,7 +7,7 @@ apply plugin: 'maven'
 apply plugin: 'java-gradle-plugin'
 
 group 'co.elastic.code'
-version '1.0'
+version '0.1.0'
 
 repositories {
     mavenCentral()
