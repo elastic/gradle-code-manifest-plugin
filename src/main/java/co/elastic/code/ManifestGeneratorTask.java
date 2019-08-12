@@ -115,21 +115,26 @@ public class ManifestGeneratorTask extends DefaultTask {
             });
             thisProjectInfo.setDependencies(new ArrayList<>(dependencyDependencyHashMap.values()));
             // set sourceSet-related infos
-            SourceSetContainer sourceSetContainer = (SourceSetContainer) project.getProperties().get("sourceSets");
-            if (sourceSetContainer != null) {
-                File projectDir = project.getProjectDir();
-                try {
-                    Set<File> srcDirs = sourceSetContainer.getByName("main").getJava().getSrcDirs();
-                    thisProjectInfo.setSrcDirs(srcDirs.stream().map(srcDir -> projectDir.toPath().relativize(srcDir.toPath()).toString()).collect(Collectors.toList()));
-                } catch (Exception e) {
-                    thisProjectInfo.setDefaultSrcDirs();
+            try {
+                SourceSetContainer sourceSetContainer = (SourceSetContainer) project.getProperties().get("sourceSets");
+                if (sourceSetContainer != null) {
+                    File projectDir = project.getProjectDir();
+                    try {
+                        Set<File> srcDirs = sourceSetContainer.getByName("main").getJava().getSrcDirs();
+                        thisProjectInfo.setSrcDirs(srcDirs.stream().map(srcDir -> projectDir.toPath().relativize(srcDir.toPath()).toString()).collect(Collectors.toList()));
+                    } catch (Exception e) {
+                        thisProjectInfo.setDefaultSrcDirs();
+                    }
+                    try {
+                        Set<File> testSrcDirs = sourceSetContainer.getByName("test").getJava().getSrcDirs();
+                        thisProjectInfo.setTestSrcDirs(testSrcDirs.stream().map(srcDir -> projectDir.toPath().relativize(srcDir.toPath()).toString()).collect(Collectors.toList()));
+                    } catch (Exception e) {
+                        thisProjectInfo.setDefaultTestSrcDirs();
+                    }
                 }
-                try {
-                    Set<File> testSrcDirs = sourceSetContainer.getByName("test").getJava().getSrcDirs();
-                    thisProjectInfo.setTestSrcDirs(testSrcDirs.stream().map(srcDir -> projectDir.toPath().relativize(srcDir.toPath()).toString()).collect(Collectors.toList()));
-                } catch (Exception e) {
-                    thisProjectInfo.setDefaultTestSrcDirs();
-                }
+            } catch (Exception e) {
+                thisProjectInfo.setDefaultSrcDirs();
+                thisProjectInfo.setDefaultTestSrcDirs();
             }
             projectInfos.add(thisProjectInfo);
         });
