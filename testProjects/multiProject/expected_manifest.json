@@ -24,89 +24,9 @@
       ],
       "dependencies": [
         {
-          "groupId": "org.apache.logging.log4j",
-          "artifactId": "log4j-api",
-          "version": "2.9.1"
-        },
-        {
-          "groupId": "org.apache.logging.log4j",
-          "artifactId": "log4j-core",
-          "version": "2.9.1"
-        },
-        {
-          "groupId": "org.apache.logging.log4j",
-          "artifactId": "log4j-slf4j-impl",
-          "version": "2.9.1"
-        },
-        {
-          "groupId": "com.puppycrawl.tools",
-          "artifactId": "checkstyle",
-          "version": "8.4"
-        },
-        {
-          "groupId": "antlr",
-          "artifactId": "antlr",
-          "version": "2.7.7"
-        },
-        {
-          "groupId": "org.antlr",
-          "artifactId": "antlr4-runtime",
-          "version": "4.7"
-        },
-        {
-          "groupId": "commons-beanutils",
-          "artifactId": "commons-beanutils",
-          "version": "1.9.3"
-        },
-        {
-          "groupId": "commons-collections",
-          "artifactId": "commons-collections",
-          "version": "3.2.2"
-        },
-        {
-          "groupId": "commons-cli",
-          "artifactId": "commons-cli",
-          "version": "1.4"
-        },
-        {
           "groupId": "com.google.guava",
           "artifactId": "guava",
           "version": "23.2-jre"
-        },
-        {
-          "groupId": "com.google.code.findbugs",
-          "artifactId": "jsr305",
-          "version": "1.3.9"
-        },
-        {
-          "groupId": "com.google.errorprone",
-          "artifactId": "error_prone_annotations",
-          "version": "2.0.18"
-        },
-        {
-          "groupId": "com.google.j2objc",
-          "artifactId": "j2objc-annotations",
-          "version": "1.1"
-        },
-        {
-          "groupId": "org.codehaus.mojo",
-          "artifactId": "animal-sniffer-annotations",
-          "version": "1.14"
-        },
-        {
-          "groupId": "net.sf.saxon",
-          "artifactId": "Saxon-HE",
-          "version": "9.8.0-5"
-        },
-        {
-          "groupId": "org.slf4j",
-          "artifactId": "slf4j-api",
-          "version": "1.7.25"
-        },
-        {
-          "groupId": "com.google.guava",
-          "artifactId": "guava",
-          "version": "23.0"
         },
         {
           "groupId": "com.google.code.findbugs",
@@ -114,84 +34,14 @@
           "version": "3.0.1"
         },
         {
-          "groupId": "net.jcip",
-          "artifactId": "jcip-annotations",
-          "version": "1.0"
-        },
-        {
-          "groupId": "com.google.code.findbugs",
-          "artifactId": "jsr305",
-          "version": "2.0.1"
-        },
-        {
-          "groupId": "com.google.code.findbugs",
-          "artifactId": "bcel-findbugs",
-          "version": "6.0"
-        },
-        {
-          "groupId": "com.google.code.findbugs",
-          "artifactId": "jFormatString",
-          "version": "2.0.1"
-        },
-        {
-          "groupId": "dom4j",
-          "artifactId": "dom4j",
-          "version": "1.6.1"
-        },
-        {
-          "groupId": "xml-apis",
-          "artifactId": "xml-apis",
-          "version": "1.0.b2"
-        },
-        {
-          "groupId": "org.ow2.asm",
-          "artifactId": "asm-debug-all",
-          "version": "5.0.2"
-        },
-        {
-          "groupId": "org.ow2.asm",
-          "artifactId": "asm-commons",
-          "version": "5.0.2"
-        },
-        {
-          "groupId": "org.ow2.asm",
-          "artifactId": "asm-tree",
-          "version": "5.0.2"
-        },
-        {
-          "groupId": "org.ow2.asm",
-          "artifactId": "asm",
-          "version": "5.0.2"
-        },
-        {
-          "groupId": "commons-lang",
-          "artifactId": "commons-lang",
+          "groupId": "org.objenesis",
+          "artifactId": "objenesis",
           "version": "2.6"
         },
         {
-          "groupId": "com.apple",
-          "artifactId": "AppleJavaExtensions",
-          "version": "1.4"
-        },
-        {
-          "groupId": "jaxen",
-          "artifactId": "jaxen",
-          "version": "1.1.6"
-        },
-        {
-          "groupId": "net.sourceforge.pmd",
-          "artifactId": "pmd-java",
-          "version": "6.8.0"
-        },
-        {
-          "groupId": "net.sourceforge.pmd",
-          "artifactId": "pmd-core",
-          "version": "6.8.0"
-        },
-        {
-          "groupId": "net.java.dev.javacc",
-          "artifactId": "javacc",
-          "version": "5.0"
+          "groupId": "org.codehaus.mojo",
+          "artifactId": "animal-sniffer-annotations",
+          "version": "1.14"
         },
         {
           "groupId": "net.sourceforge.saxon",
@@ -200,33 +50,18 @@
         },
         {
           "groupId": "org.ow2.asm",
-          "artifactId": "asm",
-          "version": "6.2.1"
+          "artifactId": "asm-commons",
+          "version": "5.0.2"
         },
         {
-          "groupId": "commons-io",
-          "artifactId": "commons-io",
-          "version": "2.4"
+          "groupId": "com.google.j2objc",
+          "artifactId": "j2objc-annotations",
+          "version": "1.1"
         },
         {
-          "groupId": "org.apache.commons",
-          "artifactId": "commons-lang3",
-          "version": "3.7"
-        },
-        {
-          "groupId": "com.beust",
-          "artifactId": "jcommander",
-          "version": "1.48"
-        },
-        {
-          "groupId": "com.google.code.gson",
-          "artifactId": "gson",
-          "version": "2.5"
-        },
-        {
-          "groupId": "org.mockito",
-          "artifactId": "mockito-core",
-          "version": "2.11.0"
+          "groupId": "org.antlr",
+          "artifactId": "antlr4-runtime",
+          "version": "4.7"
         },
         {
           "groupId": "net.bytebuddy",
@@ -234,14 +69,124 @@
           "version": "1.7.4"
         },
         {
+          "groupId": "net.java.dev.javacc",
+          "artifactId": "javacc",
+          "version": "5.0"
+        },
+        {
+          "groupId": "com.beust",
+          "artifactId": "jcommander",
+          "version": "1.48"
+        },
+        {
+          "groupId": "commons-collections",
+          "artifactId": "commons-collections",
+          "version": "3.2.2"
+        },
+        {
+          "groupId": "net.sourceforge.pmd",
+          "artifactId": "pmd-core",
+          "version": "6.8.0"
+        },
+        {
           "groupId": "net.bytebuddy",
           "artifactId": "byte-buddy-agent",
           "version": "1.7.4"
         },
         {
-          "groupId": "org.objenesis",
-          "artifactId": "objenesis",
-          "version": "2.6"
+          "groupId": "xml-apis",
+          "artifactId": "xml-apis",
+          "version": "1.0.b2"
+        },
+        {
+          "groupId": "commons-io",
+          "artifactId": "commons-io",
+          "version": "2.4"
+        },
+        {
+          "groupId": "org.slf4j",
+          "artifactId": "slf4j-api",
+          "version": "1.7.25"
+        },
+        {
+          "groupId": "jaxen",
+          "artifactId": "jaxen",
+          "version": "1.1.6"
+        },
+        {
+          "groupId": "org.apache.commons",
+          "artifactId": "commons-lang3",
+          "version": "3.7"
+        },
+        {
+          "groupId": "org.ow2.asm",
+          "artifactId": "asm-tree",
+          "version": "5.0.2"
+        },
+        {
+          "groupId": "net.sourceforge.pmd",
+          "artifactId": "pmd-java",
+          "version": "6.8.0"
+        },
+        {
+          "groupId": "com.google.code.findbugs",
+          "artifactId": "jsr305",
+          "version": "2.0.1"
+        },
+        {
+          "groupId": "com.google.errorprone",
+          "artifactId": "error_prone_annotations",
+          "version": "2.0.18"
+        },
+        {
+          "groupId": "org.mockito",
+          "artifactId": "mockito-core",
+          "version": "2.11.0"
+        },
+        {
+          "groupId": "net.sf.saxon",
+          "artifactId": "Saxon-HE",
+          "version": "9.8.0-5"
+        },
+        {
+          "groupId": "org.apache.logging.log4j",
+          "artifactId": "log4j-core",
+          "version": "2.9.1"
+        },
+        {
+          "groupId": "antlr",
+          "artifactId": "antlr",
+          "version": "2.7.7"
+        },
+        {
+          "groupId": "dom4j",
+          "artifactId": "dom4j",
+          "version": "1.6.1"
+        },
+        {
+          "groupId": "org.ow2.asm",
+          "artifactId": "asm-debug-all",
+          "version": "5.0.2"
+        },
+        {
+          "groupId": "com.google.code.findbugs",
+          "artifactId": "jFormatString",
+          "version": "2.0.1"
+        },
+        {
+          "groupId": "com.google.code.gson",
+          "artifactId": "gson",
+          "version": "2.5"
+        },
+        {
+          "groupId": "org.ow2.asm",
+          "artifactId": "asm",
+          "version": "6.2.1"
+        },
+        {
+          "groupId": "org.hamcrest",
+          "artifactId": "hamcrest-core",
+          "version": "1.3"
         },
         {
           "groupId": "junit",
@@ -249,9 +194,49 @@
           "version": "4.12"
         },
         {
-          "groupId": "org.hamcrest",
-          "artifactId": "hamcrest-core",
-          "version": "1.3"
+          "groupId": "net.jcip",
+          "artifactId": "jcip-annotations",
+          "version": "1.0"
+        },
+        {
+          "groupId": "org.apache.logging.log4j",
+          "artifactId": "log4j-api",
+          "version": "2.9.1"
+        },
+        {
+          "groupId": "com.puppycrawl.tools",
+          "artifactId": "checkstyle",
+          "version": "8.4"
+        },
+        {
+          "groupId": "org.apache.logging.log4j",
+          "artifactId": "log4j-slf4j-impl",
+          "version": "2.9.1"
+        },
+        {
+          "groupId": "com.google.code.findbugs",
+          "artifactId": "bcel-findbugs",
+          "version": "6.0"
+        },
+        {
+          "groupId": "com.apple",
+          "artifactId": "AppleJavaExtensions",
+          "version": "1.4"
+        },
+        {
+          "groupId": "commons-lang",
+          "artifactId": "commons-lang",
+          "version": "2.6"
+        },
+        {
+          "groupId": "commons-beanutils",
+          "artifactId": "commons-beanutils",
+          "version": "1.9.3"
+        },
+        {
+          "groupId": "commons-cli",
+          "artifactId": "commons-cli",
+          "version": "1.4"
         }
       ],
       "srcDirs": [
@@ -273,84 +258,9 @@
       ],
       "dependencies": [
         {
-          "groupId": "org.apache.logging.log4j",
-          "artifactId": "log4j-api",
-          "version": "2.9.1"
-        },
-        {
-          "groupId": "org.apache.logging.log4j",
-          "artifactId": "log4j-core",
-          "version": "2.9.1"
-        },
-        {
-          "groupId": "org.apache.logging.log4j",
-          "artifactId": "log4j-slf4j-impl",
-          "version": "2.9.1"
-        },
-        {
-          "groupId": "com.puppycrawl.tools",
-          "artifactId": "checkstyle",
-          "version": "8.4"
-        },
-        {
-          "groupId": "antlr",
-          "artifactId": "antlr",
-          "version": "2.7.7"
-        },
-        {
-          "groupId": "org.antlr",
-          "artifactId": "antlr4-runtime",
-          "version": "4.7"
-        },
-        {
-          "groupId": "commons-beanutils",
-          "artifactId": "commons-beanutils",
-          "version": "1.9.3"
-        },
-        {
-          "groupId": "commons-cli",
-          "artifactId": "commons-cli",
-          "version": "1.4"
-        },
-        {
           "groupId": "com.google.guava",
           "artifactId": "guava",
           "version": "23.2-jre"
-        },
-        {
-          "groupId": "net.sf.saxon",
-          "artifactId": "Saxon-HE",
-          "version": "9.8.0-5"
-        },
-        {
-          "groupId": "org.slf4j",
-          "artifactId": "slf4j-api",
-          "version": "1.7.25"
-        },
-        {
-          "groupId": "com.google.guava",
-          "artifactId": "guava",
-          "version": "23.0"
-        },
-        {
-          "groupId": "com.google.code.findbugs",
-          "artifactId": "jsr305",
-          "version": "1.3.9"
-        },
-        {
-          "groupId": "com.google.errorprone",
-          "artifactId": "error_prone_annotations",
-          "version": "2.0.18"
-        },
-        {
-          "groupId": "com.google.j2objc",
-          "artifactId": "j2objc-annotations",
-          "version": "1.1"
-        },
-        {
-          "groupId": "org.codehaus.mojo",
-          "artifactId": "animal-sniffer-annotations",
-          "version": "1.14"
         },
         {
           "groupId": "com.google.code.findbugs",
@@ -358,9 +268,79 @@
           "version": "3.0.1"
         },
         {
-          "groupId": "net.jcip",
-          "artifactId": "jcip-annotations",
-          "version": "1.0"
+          "groupId": "org.objenesis",
+          "artifactId": "objenesis",
+          "version": "2.6"
+        },
+        {
+          "groupId": "org.codehaus.mojo",
+          "artifactId": "animal-sniffer-annotations",
+          "version": "1.14"
+        },
+        {
+          "groupId": "net.sourceforge.saxon",
+          "artifactId": "saxon",
+          "version": "9.1.0.8"
+        },
+        {
+          "groupId": "org.ow2.asm",
+          "artifactId": "asm-commons",
+          "version": "5.0.2"
+        },
+        {
+          "groupId": "com.google.j2objc",
+          "artifactId": "j2objc-annotations",
+          "version": "1.1"
+        },
+        {
+          "groupId": "org.antlr",
+          "artifactId": "antlr4-runtime",
+          "version": "4.7"
+        },
+        {
+          "groupId": "net.bytebuddy",
+          "artifactId": "byte-buddy",
+          "version": "1.7.4"
+        },
+        {
+          "groupId": "net.java.dev.javacc",
+          "artifactId": "javacc",
+          "version": "5.0"
+        },
+        {
+          "groupId": "net.sourceforge.pmd",
+          "artifactId": "pmd-core",
+          "version": "6.8.0"
+        },
+        {
+          "groupId": "net.bytebuddy",
+          "artifactId": "byte-buddy-agent",
+          "version": "1.7.4"
+        },
+        {
+          "groupId": "commons-io",
+          "artifactId": "commons-io",
+          "version": "2.4"
+        },
+        {
+          "groupId": "org.slf4j",
+          "artifactId": "slf4j-api",
+          "version": "1.7.25"
+        },
+        {
+          "groupId": "jaxen",
+          "artifactId": "jaxen",
+          "version": "1.1.6"
+        },
+        {
+          "groupId": "org.apache.commons",
+          "artifactId": "commons-lang3",
+          "version": "3.7"
+        },
+        {
+          "groupId": "net.sourceforge.pmd",
+          "artifactId": "pmd-java",
+          "version": "6.8.0"
         },
         {
           "groupId": "com.google.code.findbugs",
@@ -368,14 +348,29 @@
           "version": "2.0.1"
         },
         {
-          "groupId": "com.google.code.findbugs",
-          "artifactId": "bcel-findbugs",
-          "version": "6.0"
+          "groupId": "com.google.errorprone",
+          "artifactId": "error_prone_annotations",
+          "version": "2.0.18"
         },
         {
-          "groupId": "com.google.code.findbugs",
-          "artifactId": "jFormatString",
-          "version": "2.0.1"
+          "groupId": "org.mockito",
+          "artifactId": "mockito-core",
+          "version": "2.11.0"
+        },
+        {
+          "groupId": "net.sf.saxon",
+          "artifactId": "Saxon-HE",
+          "version": "9.8.0-5"
+        },
+        {
+          "groupId": "org.apache.logging.log4j",
+          "artifactId": "log4j-core",
+          "version": "2.9.1"
+        },
+        {
+          "groupId": "antlr",
+          "artifactId": "antlr",
+          "version": "2.7.7"
         },
         {
           "groupId": "dom4j",
@@ -388,44 +383,9 @@
           "version": "5.0.2"
         },
         {
-          "groupId": "org.ow2.asm",
-          "artifactId": "asm-commons",
-          "version": "5.0.2"
-        },
-        {
-          "groupId": "commons-lang",
-          "artifactId": "commons-lang",
-          "version": "2.6"
-        },
-        {
-          "groupId": "com.apple",
-          "artifactId": "AppleJavaExtensions",
-          "version": "1.4"
-        },
-        {
-          "groupId": "jaxen",
-          "artifactId": "jaxen",
-          "version": "1.1.6"
-        },
-        {
-          "groupId": "net.sourceforge.pmd",
-          "artifactId": "pmd-java",
-          "version": "6.8.0"
-        },
-        {
-          "groupId": "net.sourceforge.pmd",
-          "artifactId": "pmd-core",
-          "version": "6.8.0"
-        },
-        {
-          "groupId": "net.java.dev.javacc",
-          "artifactId": "javacc",
-          "version": "5.0"
-        },
-        {
-          "groupId": "net.sourceforge.saxon",
-          "artifactId": "saxon",
-          "version": "9.1.0.8"
+          "groupId": "com.google.code.findbugs",
+          "artifactId": "jFormatString",
+          "version": "2.0.1"
         },
         {
           "groupId": "org.ow2.asm",
@@ -433,34 +393,9 @@
           "version": "6.2.1"
         },
         {
-          "groupId": "commons-io",
-          "artifactId": "commons-io",
-          "version": "2.4"
-        },
-        {
-          "groupId": "org.apache.commons",
-          "artifactId": "commons-lang3",
-          "version": "3.7"
-        },
-        {
-          "groupId": "org.mockito",
-          "artifactId": "mockito-core",
-          "version": "2.11.0"
-        },
-        {
-          "groupId": "net.bytebuddy",
-          "artifactId": "byte-buddy",
-          "version": "1.7.4"
-        },
-        {
-          "groupId": "net.bytebuddy",
-          "artifactId": "byte-buddy-agent",
-          "version": "1.7.4"
-        },
-        {
-          "groupId": "org.objenesis",
-          "artifactId": "objenesis",
-          "version": "2.6"
+          "groupId": "org.hamcrest",
+          "artifactId": "hamcrest-core",
+          "version": "1.3"
         },
         {
           "groupId": "junit",
@@ -468,9 +403,49 @@
           "version": "4.12"
         },
         {
-          "groupId": "org.hamcrest",
-          "artifactId": "hamcrest-core",
-          "version": "1.3"
+          "groupId": "net.jcip",
+          "artifactId": "jcip-annotations",
+          "version": "1.0"
+        },
+        {
+          "groupId": "org.apache.logging.log4j",
+          "artifactId": "log4j-api",
+          "version": "2.9.1"
+        },
+        {
+          "groupId": "com.puppycrawl.tools",
+          "artifactId": "checkstyle",
+          "version": "8.4"
+        },
+        {
+          "groupId": "org.apache.logging.log4j",
+          "artifactId": "log4j-slf4j-impl",
+          "version": "2.9.1"
+        },
+        {
+          "groupId": "com.google.code.findbugs",
+          "artifactId": "bcel-findbugs",
+          "version": "6.0"
+        },
+        {
+          "groupId": "com.apple",
+          "artifactId": "AppleJavaExtensions",
+          "version": "1.4"
+        },
+        {
+          "groupId": "commons-lang",
+          "artifactId": "commons-lang",
+          "version": "2.6"
+        },
+        {
+          "groupId": "commons-beanutils",
+          "artifactId": "commons-beanutils",
+          "version": "1.9.3"
+        },
+        {
+          "groupId": "commons-cli",
+          "artifactId": "commons-cli",
+          "version": "1.4"
         }
       ],
       "srcDirs": [
