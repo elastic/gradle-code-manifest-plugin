@@ -1,5 +1,6 @@
 plugins {
     id 'groovy'
+    id "com.gradle.plugin-publish" version "0.10.1"
 }
 
 apply plugin: 'java'
@@ -8,6 +9,12 @@ apply plugin: 'java-gradle-plugin'
 
 group 'co.elastic.code'
 version '0.1.0'
+
+pluginBundle {
+    website = 'https://github.com/elastic/gradle-code-manifest-plugin'
+    vcsUrl = 'https://github.com/elastic/gradle-code-manifest-plugin.git'
+    tags = ['gradle plugin', 'Java language server', 'code intelligence']
+}
 
 repositories {
     mavenCentral()
@@ -22,6 +29,17 @@ dependencies {
     testCompile group: 'junit-addons', name: 'junit-addons', version: '1.4'
     compile group: 'org.apache.commons', name: 'commons-lang3', version: '3.8.1'
     implementation 'com.google.code.gson:gson:2.8.5'
+}
+
+gradlePlugin {
+    plugins {
+        greetingsPlugin {
+            id = 'co.elastic.code.gradle-manifest-plugin'
+            displayName = 'Gradle Manifest Plugin'
+            description = 'Gradle plugin to generate a manifest file consumed by https://github.com/elastic/java-langserver'
+            implementationClass = 'co.elastic.code.MyPlugin'
+        }
+    }
 }
 
 uploadArchives {
