@@ -8,7 +8,7 @@ apply plugin: 'maven'
 apply plugin: 'java-gradle-plugin'
 
 group 'co.elastic.code'
-version '0.1.0'
+version '0.1.1'
 
 pluginBundle {
     website = 'https://github.com/elastic/gradle-code-manifest-plugin'
